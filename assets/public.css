@@ -1,0 +1,186 @@
+/**
+ * Styling for Enhanceo Popup Craft
+ */
+
+.popup-craft-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
+	pointer-events: none;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	box-sizing: border-box;
+}
+
+.popup-craft-wrapper *,
+.popup-craft-wrapper *::before,
+.popup-craft-wrapper *::after {
+	box-sizing: border-box;
+}
+
+.popup-craft-wrapper.is-visible {
+	visibility: visible;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* Glassmorphism Backdrop / Overlay styling */
+.popup-craft-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(15, 23, 42, 0.4); /* slate/dark overlay */
+	cursor: default;
+	transition: opacity 0.4s ease;
+}
+
+.popup-craft-close-on-overlay .popup-craft-overlay {
+	cursor: pointer;
+}
+
+.popup-craft-has-blur .popup-craft-overlay {
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+/* Central Content Container */
+.popup-craft-content-box {
+	position: relative;
+	background-color: var(--popup-bg, #ffffff);
+	color: var(--popup-text, #1e293b);
+	padding: 2.5rem;
+	border-radius: var(--popup-border-radius, 12px);
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	max-width: 90%;
+	width: 600px;
+	max-height: 85vh;
+	overflow-y: auto;
+	z-index: 10;
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modern Close Button (SVG layout) */
+.popup-craft-close {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	background: rgba(15, 23, 42, 0.06);
+	border: none;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--popup-text, #1e293b);
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+	padding: 0;
+	opacity: 0.8;
+}
+
+.popup-craft-close:hover {
+	background: rgba(15, 23, 42, 0.12);
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.popup-craft-close svg {
+	width: 14px;
+	height: 14px;
+	fill: currentColor;
+}
+
+.popup-craft-inner {
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+/* Animations */
+
+/* 1. Zoom In */
+.popup-craft-anim-zoom .popup-craft-content-box {
+	opacity: 0;
+	transform: scale(0.9) translateY(10px);
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-zoom .popup-craft-content-box {
+	opacity: 1;
+	transform: scale(1) translateY(0);
+}
+
+/* 2. Fade In */
+.popup-craft-anim-fade .popup-craft-content-box {
+	opacity: 0;
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-fade .popup-craft-content-box {
+	opacity: 1;
+}
+
+/* 3. Slide Up */
+.popup-craft-anim-slide_up .popup-craft-content-box {
+	opacity: 0;
+	transform: translateY(40px);
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-slide_up .popup-craft-content-box {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 4. Slide Down */
+.popup-craft-anim-slide_down .popup-craft-content-box {
+	opacity: 0;
+	transform: translateY(-40px);
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-slide_down .popup-craft-content-box {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+
+/* Layout Modifiers */
+
+/* Top Banner */
+.popup-craft-type-top_banner {
+	align-items: flex-start;
+}
+.popup-craft-type-top_banner .popup-craft-content-box {
+	width: 100%;
+	max-width: 100%;
+	border-radius: 0;
+}
+.popup-craft-anim-zoom.popup-craft-type-top_banner .popup-craft-content-box,
+.popup-craft-anim-slide_down.popup-craft-type-top_banner .popup-craft-content-box {
+	transform: translateY(-100%);
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-zoom.popup-craft-type-top_banner .popup-craft-content-box,
+.popup-craft-wrapper.is-visible.popup-craft-anim-slide_down.popup-craft-type-top_banner .popup-craft-content-box {
+	transform: translateY(0);
+}
+
+/* Bottom Banner */
+.popup-craft-type-bottom_banner {
+	align-items: flex-end;
+}
+.popup-craft-type-bottom_banner .popup-craft-content-box {
+	width: 100%;
+	max-width: 100%;
+	border-radius: 0;
+}
+.popup-craft-anim-zoom.popup-craft-type-bottom_banner .popup-craft-content-box,
+.popup-craft-anim-slide_up.popup-craft-type-bottom_banner .popup-craft-content-box {
+	transform: translateY(100%);
+}
+.popup-craft-wrapper.is-visible.popup-craft-anim-zoom.popup-craft-type-bottom_banner .popup-craft-content-box,
+.popup-craft-wrapper.is-visible.popup-craft-anim-slide_up.popup-craft-type-bottom_banner .popup-craft-content-box {
+	transform: translateY(0);
+}
