@@ -255,6 +255,7 @@ class Enhanceo_Popup_Craft_Meta_Box {
 		}
 
 		if ( isset( $_POST['popup_craft_settings'] ) && is_array( $_POST['popup_craft_settings'] ) ) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw array is unslashed here; every individual field is validated and sanitized below before use or storage.
 			$raw_data = wp_unslash( $_POST['popup_craft_settings'] );
 			
 			$sanitized_data = array(
