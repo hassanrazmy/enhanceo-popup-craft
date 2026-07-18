@@ -4,13 +4,11 @@ const fs = require('fs');
 const path = require('path');
 
 const PLUGIN_SLUG = 'elevoire-popup-craft';
-
-const distDir = path.join(__dirname, 'dist');
-const zipName = `${PLUGIN_SLUG}.zip`;
-const tempDir = path.join(distDir, PLUGIN_SLUG);
+const buildDir = path.join(__dirname, '.build');
+const zipOut = path.join(__dirname, '..');
 
 function clean(done) {
-  fs.rmSync(distDir, { recursive: true, force: true });
+  fs.rmSync(buildDir, { recursive: true, force: true });
   done();
 }
 
@@ -21,20 +19,20 @@ function copyFiles() {
     'includes/**/*',
     'assets/**/*'
   ], { base: __dirname })
-    .pipe(dest(tempDir));
+    .pipe(dest(path.join(buildDir, PLUGIN_SLUG)));
 }
 
 function createZip() {
-  return src(`${tempDir}/**/*`, { base: distDir })
-    .pipe(zip(zipName))
-    .pipe(dest(distDir));
+  return src(`${buildDir}/${PLUGIN_SLUG}/**/*`, { base: buildDir })
+    .pipe(zip(`${PLUGIN_SLUG}.zip`))
+    .pipe(dest(zipOut));
 }
 
-function cleanupTemp(done) {
-  fs.rmSync(tempDir, { recursive: true, force: true });
+function cleanup(done) {
+  fs.rmSync(buildDir, { recursive: true, force: true });
   done();
 }
 
-exports.zip = series(clean, copyFiles, createZip, cleanupTemp);
+exports.zip = series(clean, copyFiles, createZip, cleanup);
 exports.clean = clean;
 exports.default = exports.zip;

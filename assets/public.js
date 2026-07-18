@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
 	// ElevoirePopupCraftData is provided via wp_localize_script
 	if (typeof ElevoirePopupCraftData === 'undefined') {
 		return;
@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	var delay = parseInt(ElevoirePopupCraftData.delay, 10);
 	var cookieExpiry = parseInt(ElevoirePopupCraftData.cookie_expiry, 10);
 	var closeOnOverlay = ElevoirePopupCraftData.close_on_overlay === true || ElevoirePopupCraftData.close_on_overlay === '1';
-	var storageKey = 'popup_craft_closed_' + popupId;
+	var storageKey = 'elevoire_popup_craft_closed_' + popupId;
 
-	var wrapper = document.getElementById('popup-craft-wrapper-' + popupId);
+	var wrapper = document.getElementById('elevoire-popup-craft-wrapper-' + popupId);
 	if (!wrapper) {
 		return;
 	}
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		var focusables = getFocusableElements();
 		if (focusables.length > 0) {
 			// Find close button or first custom element
-			var closeBtn = wrapper.querySelector('.popup-craft-close');
+			var closeBtn = wrapper.querySelector('.elevoire-popup-craft-close');
 			if (closeBtn) {
 				closeBtn.focus();
 			} else {
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	closeTriggers.forEach(function (trigger) {
 		trigger.addEventListener('click', function (e) {
 			// If clicking on wrapper (overlay) itself, check closeOnOverlay option
-			if (trigger.classList.contains('popup-craft-overlay') && !closeOnOverlay) {
+			if (trigger.classList.contains('elevoire-popup-craft-overlay') && !closeOnOverlay) {
 				return;
 			}
 			e.preventDefault();

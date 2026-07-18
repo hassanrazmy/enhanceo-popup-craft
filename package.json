@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A lightweight, performant, and secure popup builder for WordPress.",
   "scripts": {
-    "build": "gulp zip",
+    "zip": "gulp zip",
     "clean": "gulp clean"
   },
   "devDependencies": {

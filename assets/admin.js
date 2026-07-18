@@ -1,11 +1,11 @@
-jQuery(document).ready(function($){
-	if ( $('.popup-craft-color-picker').length ) {
-		$('.popup-craft-color-picker').wpColorPicker();
+﻿jQuery(document).ready(function($){
+	if ( $('.elevoire-popup-craft-color-picker').length ) {
+		$('.elevoire-popup-craft-color-picker').wpColorPicker();
 	}
 
 	// ── Instant client-side category filter ──────────────────────────────────
-	var $filterBtns = $('.elevoire-filter-btn');
-	var $cards      = $('.elevoire-template-card');
+	var $filterBtns = $('.elevoire-popup-craft-filter-btn');
+	var $cards      = $('.elevoire-popup-craft-template-card');
 
 	if ( $filterBtns.length ) {
 		$filterBtns.on('click', function() {
@@ -27,16 +27,16 @@ jQuery(document).ready(function($){
 	}
 
 	// Live Preview Lightbox setup
-	var $lightbox = $('#elevoire-preview-lightbox');
-	var $lightboxBox = $('#elevoire-lightbox-container-box');
-	var $lightboxContent = $('#elevoire-lightbox-inner-content');
+	var $lightbox = $('#elevoire-popup-craft-preview-lightbox');
+	var $lightboxBox = $('#elevoire-popup-craft-lightbox-container-box');
+	var $lightboxContent = $('#elevoire-popup-craft-lightbox-inner-content');
 
-	if ( $lightbox.length && typeof elevoireTemplatesData !== 'undefined' ) {
+	if ( $lightbox.length && typeof elevoirePopupCraftTemplatesData !== 'undefined' ) {
 		
-		$('.elevoire-preview-btn').on('click', function(e) {
+		$('.elevoire-popup-craft-preview-btn').on('click', function(e) {
 			e.preventDefault();
 			var templateId = $(this).data('template-id');
-			var template = elevoireTemplatesData[templateId];
+			var template = elevoirePopupCraftTemplatesData[templateId];
 
 			if (!template) {
 				return;
@@ -68,7 +68,7 @@ jQuery(document).ready(function($){
 		});
 
 		// Close events
-		$('#elevoire-lightbox-close-btn, #elevoire-lightbox-close-overlay').on('click', function(e) {
+		$('#elevoire-popup-craft-lightbox-close-btn, #elevoire-popup-craft-lightbox-close-overlay').on('click', function(e) {
 			e.preventDefault();
 			$lightbox.hide();
 			$lightboxContent.empty();

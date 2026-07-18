@@ -1,15 +1,16 @@
-<?php
+﻿<?php
 /**
  * Plugin Name:       Elevoire Popup Craft
  * Plugin URI:        https://wordpress.org/plugins/elevoire-popup-craft/
  * Description:       A lightweight, performant, and secure popup builder. Build beautiful, accessible popups with zero jQuery dependencies.
  * Version:           1.0.0
  * Author:            Elevoire
- * Author URI:        https://profiles.wordpress.org/elevoire/
+ * Author URI:        https://elevoire.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       elevoire-popup-craft
  * Requires at least: 6.0
+ * Tested up to:      7.0.2
  * Requires PHP:      7.4
  *
  * @package ElevoirePopupCraft
@@ -29,8 +30,8 @@ define( 'ELEVOIRE_POPUP_CRAFT_PATH',        plugin_dir_path( __FILE__ ) );
 define( 'ELEVOIRE_POPUP_CRAFT_URL',         plugin_dir_url( __FILE__ ) );
 define( 'ELEVOIRE_POPUP_CRAFT_ASSETS_URL',  ELEVOIRE_POPUP_CRAFT_URL  . 'assets/' );
 define( 'ELEVOIRE_POPUP_CRAFT_ASSETS_PATH', ELEVOIRE_POPUP_CRAFT_PATH . 'assets/' );
-define( 'ELEVOIRE_POPUP_CRAFT_CPT_SLUG',    'elevoire_popup' );
-define( 'ELEVOIRE_POPUP_CRAFT_META_KEY',    '_elevoire_popup_settings' );
+define( 'ELEVOIRE_POPUP_CRAFT_CPT_SLUG',    'elevoire_popup_craft' );
+define( 'ELEVOIRE_POPUP_CRAFT_META_KEY',    '_elevoire_elevoire_popup_craft_settings' );
 
 /**
  * Class Elevoire_Popup_Craft
@@ -76,7 +77,7 @@ final class Elevoire_Popup_Craft {
 		require_once ELEVOIRE_POPUP_CRAFT_PATH . 'includes/class-elevoire-popup-craft-cpt.php';
 		require_once ELEVOIRE_POPUP_CRAFT_PATH . 'includes/class-elevoire-popup-craft-meta-box.php';
 		require_once ELEVOIRE_POPUP_CRAFT_PATH . 'includes/class-elevoire-popup-craft-public.php';
-		require_once ELEVOIRE_POPUP_CRAFT_PATH . 'includes/class-elevoire-popup-templates.php';
+		require_once ELEVOIRE_POPUP_CRAFT_PATH . 'includes/class-elevoire-popup-craft-popup-templates.php';
 	}
 
 	/**
@@ -104,9 +105,9 @@ final class Elevoire_Popup_Craft {
  *
  * @return Elevoire_Popup_Craft
  */
-function elepc_popup_craft(): Elevoire_Popup_Craft {
+function elevoire_popup_craft(): Elevoire_Popup_Craft {
 	return Elevoire_Popup_Craft::instance();
 }
 
 // Boot it up.
-elepc_popup_craft();
+elevoire_popup_craft();

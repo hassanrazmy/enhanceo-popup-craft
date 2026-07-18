@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Register Meta Boxes for settings.
  *
@@ -68,7 +68,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 	 */
 	public function add_meta_boxes(): void {
 		add_meta_box(
-			'popup_craft_settings',
+			'elevoire_popup_craft_settings',
 			__( 'Popup Settings', 'elevoire-popup-craft' ),
 			array( $this, 'render_meta_box' ),
 			ELEVOIRE_POPUP_CRAFT_CPT_SLUG,
@@ -83,7 +83,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 	 * @param WP_Post $post The post object.
 	 */
 	public function render_meta_box( $post ): void {
-		wp_nonce_field( 'popup_craft_save_data', 'popup_craft_meta_nonce' );
+		wp_nonce_field( 'elevoire_popup_craft_save_data', 'elevoire_popup_craft_meta_nonce' );
 
 		$settings = get_post_meta( $post->ID, ELEVOIRE_POPUP_CRAFT_META_KEY, true );
 		if ( ! is_array( $settings ) ) {
@@ -109,7 +109,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 
 		// Type
 		echo '<p><strong>' . esc_html__( 'Popup Type', 'elevoire-popup-craft' ) . '</strong><br>';
-		echo '<select name="popup_craft_settings[type]" style="width: 100%;">';
+		echo '<select name="elevoire_popup_craft_settings[type]" style="width: 100%;">';
 		$types = array(
 			'center_modal'  => __( 'Center Modal', 'elevoire-popup-craft' ),
 			'top_banner'    => __( 'Top Banner', 'elevoire-popup-craft' ),
@@ -127,7 +127,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 
 		// Entrance Animation
 		echo '<p><strong>' . esc_html__( 'Entrance Animation', 'elevoire-popup-craft' ) . '</strong><br>';
-		echo '<select name="popup_craft_settings[animation]" style="width: 100%;">';
+		echo '<select name="elevoire_popup_craft_settings[animation]" style="width: 100%;">';
 		$animations = array(
 			'zoom'       => __( 'Zoom In', 'elevoire-popup-craft' ),
 			'fade'       => __( 'Fade In', 'elevoire-popup-craft' ),
@@ -147,7 +147,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Delay
 		echo '<p><strong>' . esc_html__( 'Trigger Delay (seconds)', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="number" name="popup_craft_settings[delay]" value="%d" min="0" step="1" style="width: 100%%;">',
+			'<input type="number" name="elevoire_popup_craft_settings[delay]" value="%d" min="0" step="1" style="width: 100%%;">',
 			absint( $settings['delay'] )
 		);
 		echo '</p>';
@@ -155,7 +155,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Border Radius
 		echo '<p><strong>' . esc_html__( 'Border Radius (px)', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="number" name="popup_craft_settings[border_radius]" value="%d" min="0" step="1" style="width: 100%%;">',
+			'<input type="number" name="elevoire_popup_craft_settings[border_radius]" value="%d" min="0" step="1" style="width: 100%%;">',
 			absint( $settings['border_radius'] )
 		);
 		echo '</p>';
@@ -163,7 +163,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Backdrop Blur (Glassmorphism)
 		echo '<p><label>';
 		printf(
-			'<input type="checkbox" name="popup_craft_settings[backdrop_blur]" value="1" %s> ',
+			'<input type="checkbox" name="elevoire_popup_craft_settings[backdrop_blur]" value="1" %s> ',
 			checked( $settings['backdrop_blur'], '1', false )
 		);
 		echo '<strong>' . esc_html__( 'Enable Glassmorphic Backdrop Blur', 'elevoire-popup-craft' ) . '</strong>';
@@ -172,7 +172,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Close on Overlay Click
 		echo '<p><label>';
 		printf(
-			'<input type="checkbox" name="popup_craft_settings[close_on_overlay]" value="1" %s> ',
+			'<input type="checkbox" name="elevoire_popup_craft_settings[close_on_overlay]" value="1" %s> ',
 			checked( $settings['close_on_overlay'], '1', false )
 		);
 		echo '<strong>' . esc_html__( 'Close when clicking overlay backdrop', 'elevoire-popup-craft' ) . '</strong>';
@@ -180,7 +180,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 
 		// Targeting
 		echo '<p><strong>' . esc_html__( 'Targeting', 'elevoire-popup-craft' ) . '</strong><br>';
-		echo '<select name="popup_craft_settings[targeting]" style="width: 100%;">';
+		echo '<select name="elevoire_popup_craft_settings[targeting]" style="width: 100%;">';
 		$targeting_opts = array(
 			'all'      => __( 'All Pages', 'elevoire-popup-craft' ),
 			'specific' => __( 'Specific Post/Page IDs', 'elevoire-popup-craft' ),
@@ -198,7 +198,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Specific IDs
 		echo '<p><strong>' . esc_html__( 'Specific IDs (comma-separated)', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="text" name="popup_craft_settings[specific_ids]" value="%s" style="width: 100%%;">',
+			'<input type="text" name="elevoire_popup_craft_settings[specific_ids]" value="%s" style="width: 100%%;">',
 			esc_attr( $settings['specific_ids'] )
 		);
 		echo '</p>';
@@ -206,7 +206,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Cookie Expiry
 		echo '<p><strong>' . esc_html__( 'Cookie Expiry (days)', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="number" name="popup_craft_settings[cookie_expiry]" value="%d" min="0" step="1" style="width: 100%%;">',
+			'<input type="number" name="elevoire_popup_craft_settings[cookie_expiry]" value="%d" min="0" step="1" style="width: 100%%;">',
 			absint( $settings['cookie_expiry'] )
 		);
 		echo '<br><span class="description" style="font-size: 11px; color: #666;">' . esc_html__( 'Enter 0 to make the popup appear on every refresh.', 'elevoire-popup-craft' ) . '</span></p>';
@@ -214,7 +214,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Background Color
 		echo '<p><strong>' . esc_html__( 'Background Color', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="text" name="popup_craft_settings[bg_color]" value="%s" class="popup-craft-color-picker">',
+			'<input type="text" name="elevoire_popup_craft_settings[bg_color]" value="%s" class="elevoire-popup-craft-color-picker">',
 			esc_attr( $settings['bg_color'] )
 		);
 		echo '</p>';
@@ -222,7 +222,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Text Color
 		echo '<p><strong>' . esc_html__( 'Text Color', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<input type="text" name="popup_craft_settings[text_color]" value="%s" class="popup-craft-color-picker">',
+			'<input type="text" name="elevoire_popup_craft_settings[text_color]" value="%s" class="elevoire-popup-craft-color-picker">',
 			esc_attr( $settings['text_color'] )
 		);
 		echo '</p>';
@@ -230,7 +230,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 		// Custom CSS
 		echo '<p><strong>' . esc_html__( 'Custom CSS', 'elevoire-popup-craft' ) . '</strong><br>';
 		printf(
-			'<textarea name="popup_craft_settings[custom_css]" rows="5" style="width: 100%%; font-family: monospace; font-size: 12px;">%s</textarea>',
+			'<textarea name="elevoire_popup_craft_settings[custom_css]" rows="5" style="width: 100%%; font-family: monospace; font-size: 12px;">%s</textarea>',
 			esc_textarea( $settings['custom_css'] )
 		);
 		echo '</p>';
@@ -242,7 +242,7 @@ class Elevoire_Popup_Craft_Meta_Box {
 	 * @param int $post_id Post ID.
 	 */
 	public function save_meta_box_data( $post_id ): void {
-		if ( ! isset( $_POST['popup_craft_meta_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['popup_craft_meta_nonce'] ) ), 'popup_craft_save_data' ) ) {
+		if ( ! isset( $_POST['elevoire_popup_craft_meta_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['elevoire_popup_craft_meta_nonce'] ) ), 'elevoire_popup_craft_save_data' ) ) {
 			return;
 		}
 
@@ -254,9 +254,9 @@ class Elevoire_Popup_Craft_Meta_Box {
 			return;
 		}
 
-		if ( isset( $_POST['popup_craft_settings'] ) && is_array( $_POST['popup_craft_settings'] ) ) {
+		if ( isset( $_POST['elevoire_popup_craft_settings'] ) && is_array( $_POST['elevoire_popup_craft_settings'] ) ) {
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw array is unslashed here; every individual field is validated and sanitized below before use or storage.
-			$raw_data = wp_unslash( $_POST['popup_craft_settings'] );
+			$raw_data = wp_unslash( $_POST['elevoire_popup_craft_settings'] );
 			
 			$sanitized_data = array(
 				'type'             => isset( $raw_data['type'] ) ? sanitize_key( $raw_data['type'] ) : 'center_modal',

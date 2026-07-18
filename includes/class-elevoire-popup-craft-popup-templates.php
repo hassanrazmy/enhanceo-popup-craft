@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Starter Templates Library for Elevoire Popup Craft.
  *
@@ -48,9 +48,9 @@ class Elevoire_Popup_Templates {
 	 * @param string $hook_suffix The current page hook.
 	 */
 	public function enqueue_admin_assets( $hook_suffix ): void {
-		if ( 'elevoire_popup_page_elevoire-popup-templates' === $hook_suffix ) {
+		if ( 'elevoire_popup_craft_page_elevoire-popup-craft-popup-templates' === $hook_suffix ) {
 			wp_enqueue_style(
-				'elevoire-popup-templates-admin',
+				'elevoire-popup-craft-popup-templates-admin',
 				ELEVOIRE_POPUP_CRAFT_ASSETS_URL . 'admin.css',
 				array(),
 				ELEVOIRE_POPUP_CRAFT_VERSION
@@ -74,7 +74,7 @@ class Elevoire_Popup_Templates {
 			__( 'Starter Templates', 'elevoire-popup-craft' ),
 			__( 'Templates Library', 'elevoire-popup-craft' ),
 			'edit_posts',
-			'elevoire-popup-templates',
+			'elevoire-popup-craft-popup-templates',
 			array( $this, 'render_templates_page' )
 		);
 	}
@@ -83,11 +83,11 @@ class Elevoire_Popup_Templates {
 	 * Listen and process template import action.
 	 */
 	public function handle_import_action(): void {
-		if ( ! isset( $_GET['action'] ) || 'elevoire_import_template' !== $_GET['action'] ) {
+		if ( ! isset( $_GET['action'] ) || 'elevoire_popup_craft_import_template' !== $_GET['action'] ) {
 			return;
 		}
 
-		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'elevoire_import_template_nonce' ) ) {
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'elevoire_popup_craft_import_template_nonce' ) ) {
 			wp_die( esc_html__( 'Security check failed.', 'elevoire-popup-craft' ) );
 		}
 
@@ -140,65 +140,65 @@ class Elevoire_Popup_Templates {
 			'social'   => __( 'Social Links', 'elevoire-popup-craft' ),
 		);
 		?>
-		<div class="wrap elevoire-templates-wrap">
-			<div class="elevoire-templates-header">
+		<div class="wrap elevoire-popup-craft-templates-wrap">
+			<div class="elevoire-popup-craft-templates-header">
 				<h1><?php esc_html_e( 'Popup Craft Starter Library', 'elevoire-popup-craft' ); ?></h1>
 				<p class="description"><?php esc_html_e( 'Choose from our premium, high-converting templates to kickstart your popups instantly.', 'elevoire-popup-craft' ); ?></p>
 			</div>
 
 			<!-- Category filters — client-side only, zero page reload -->
-			<div class="elevoire-templates-filter-bar">
+			<div class="elevoire-popup-craft-templates-filter-bar">
 				<?php foreach ( $categories as $slug => $label ) : ?>
 					<button type="button"
-						class="button elevoire-filter-btn<?php echo 'all' === $slug ? ' active' : ''; ?>"
+						class="button elevoire-popup-craft-filter-btn<?php echo 'all' === $slug ? ' active' : ''; ?>"
 						data-filter="<?php echo esc_attr( $slug ); ?>"
 					><?php echo esc_html( $label ); ?></button>
 				<?php endforeach; ?>
 			</div>
 
 			<!-- Templates Grid — all 20 cards rendered; JS toggles visibility -->
-			<div class="elevoire-templates-grid" id="elevoire-templates-grid">
+			<div class="elevoire-popup-craft-templates-grid" id="elevoire-popup-craft-templates-grid">
 				<?php foreach ( $templates as $id => $template ) :
 					$import_url = wp_nonce_url(
 						add_query_arg(
 							array(
-								'action'      => 'elevoire_import_template',
+								'action'      => 'elevoire_popup_craft_import_template',
 								'template_id' => $id,
 							),
-							admin_url( 'edit.php?post_type=' . ELEVOIRE_POPUP_CRAFT_CPT_SLUG . '&page=elevoire-popup-templates' )
+							admin_url( 'edit.php?post_type=' . ELEVOIRE_POPUP_CRAFT_CPT_SLUG . '&page=elevoire-popup-craft-popup-templates' )
 						),
-						'elevoire_import_template_nonce'
+						'elevoire_popup_craft_import_template_nonce'
 					);
 				?>
-					<div class="elevoire-template-card" data-category="<?php echo esc_attr( $template['category_slug'] ); ?>">
-						<div class="elevoire-template-preview-meta">
-							<span class="elevoire-template-badge"><?php echo esc_html( $template['category_name'] ); ?></span>
-							<span class="elevoire-template-badge type-badge"><?php echo esc_html( str_replace( '_', ' ', $template['settings']['type'] ) ); ?></span>
+					<div class="elevoire-popup-craft-template-card" data-category="<?php echo esc_attr( $template['category_slug'] ); ?>">
+						<div class="elevoire-popup-craft-template-preview-meta">
+							<span class="elevoire-popup-craft-template-badge"><?php echo esc_html( $template['category_name'] ); ?></span>
+							<span class="elevoire-popup-craft-template-badge type-badge"><?php echo esc_html( str_replace( '_', ' ', $template['settings']['type'] ) ); ?></span>
 						</div>
-						<div class="elevoire-template-card-body">
-							<h3 class="elevoire-template-title"><?php echo esc_html( $template['name'] ); ?></h3>
-							<p class="elevoire-template-desc"><?php echo esc_html( $template['description'] ); ?></p>
+						<div class="elevoire-popup-craft-template-card-body">
+							<h3 class="elevoire-popup-craft-template-title"><?php echo esc_html( $template['name'] ); ?></h3>
+							<p class="elevoire-popup-craft-template-desc"><?php echo esc_html( $template['description'] ); ?></p>
 						</div>
-						<div class="elevoire-template-card-footer">
-							<a href="<?php echo esc_url( $import_url ); ?>" class="button button-primary elevoire-import-btn"><?php esc_html_e( 'Use Template', 'elevoire-popup-craft' ); ?></a>
-							<button type="button" class="button button-secondary elevoire-preview-btn" data-template-id="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Preview', 'elevoire-popup-craft' ); ?></button>
+						<div class="elevoire-popup-craft-template-card-footer">
+							<a href="<?php echo esc_url( $import_url ); ?>" class="button button-primary elevoire-popup-craft-import-btn"><?php esc_html_e( 'Use Template', 'elevoire-popup-craft' ); ?></a>
+							<button type="button" class="button button-secondary elevoire-popup-craft-preview-btn" data-template-id="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Preview', 'elevoire-popup-craft' ); ?></button>
 						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
 
 			<!-- Lightbox Container for Live Preview -->
-			<div id="elevoire-preview-lightbox" class="elevoire-lightbox" style="display: none;">
-				<div class="elevoire-lightbox-overlay" id="elevoire-lightbox-close-overlay"></div>
-				<div class="elevoire-lightbox-container" id="elevoire-lightbox-container-box">
-					<button type="button" class="elevoire-lightbox-close" id="elevoire-lightbox-close-btn">&times;</button>
-					<div class="elevoire-lightbox-content" id="elevoire-lightbox-inner-content"></div>
+			<div id="elevoire-popup-craft-preview-lightbox" class="elevoire-popup-craft-lightbox" style="display: none;">
+				<div class="elevoire-popup-craft-lightbox-overlay" id="elevoire-popup-craft-lightbox-close-overlay"></div>
+				<div class="elevoire-popup-craft-lightbox-container" id="elevoire-popup-craft-lightbox-container-box">
+					<button type="button" class="elevoire-popup-craft-lightbox-close" id="elevoire-popup-craft-lightbox-close-btn">&times;</button>
+					<div class="elevoire-popup-craft-lightbox-content" id="elevoire-popup-craft-lightbox-inner-content"></div>
 				</div>
 			</div>
 
 			<!-- Localize templates configurations -->
 			<script type="text/javascript">
-				var elevoireTemplatesData = <?php echo wp_json_encode( $templates ); ?>;
+				var elevoirePopupCraftTemplatesData = <?php echo wp_json_encode( $templates ); ?>;
 			</script>
 		</div>
 		<?php
@@ -330,7 +330,7 @@ class Elevoire_Popup_Templates {
 				'        COMEBACK15' . "\n" .
 				'    </div>' . "\n" .
 				'    <div>' . "\n" .
-				'        <a href="#" style="font-size: 14px; color: #9f1239; font-weight: 600; text-decoration: underline;" onclick="event.preventDefault(); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();">No thanks, I want to pay full price</a>' . "\n" .
+				'        <a href="#" style="font-size: 14px; color: #9f1239; font-weight: 600; text-decoration: underline;" onclick="event.preventDefault(); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();">No thanks, I want to pay full price</a>' . "\n" .
 				'    </div>' . "\n" .
 				'</div>',
 			),
@@ -437,7 +437,7 @@ class Elevoire_Popup_Templates {
 				'    <p style="color: #64748b; font-size: 14px; margin-bottom: 24px; line-height: 1.5;">The items in your cart are highly popular and may sell out soon. Complete your checkout now and get <strong>Free Express Shipping</strong>.</p>' . "\n" .
 				'    <div style="display: flex; gap: 12px; justify-content: center;">' . "\n" .
 				'        <a href="#" style="padding: 12px 24px; background: #4f46e5; color: #fff; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 14px;">Return to Cart</a>' . "\n" .
-				'        <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="padding: 12px 24px; background: #f1f5f9; color: #475569; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Dismiss</button>' . "\n" .
+				'        <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="padding: 12px 24px; background: #f1f5f9; color: #475569; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Dismiss</button>' . "\n" .
 				'    </div>' . "\n" .
 				'</div>',
 			),
@@ -498,7 +498,7 @@ class Elevoire_Popup_Templates {
 				'            <li>20+ fully tailored editor colors</li>' . "\n" .
 				'        </ul>' . "\n" .
 				'    </div>' . "\n" .
-				'    <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 100%; padding: 12px; background: #0284c7; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Enable in Settings</button>' . "\n" .
+				'    <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 100%; padding: 12px; background: #0284c7; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Enable in Settings</button>' . "\n" .
 				'</div>',
 			),
 			'webinar_event' => array(
@@ -563,7 +563,7 @@ class Elevoire_Popup_Templates {
 				'    <div style="font-size: 32px; margin-bottom: 8px;">🎄</div>' . "\n" .
 				'    <div style="font-size: 22px; font-weight: 700; color: #9d174d; margin-bottom: 10px;">Holiday Schedule Updates</div>' . "\n" .
 				'    <p style="color: #be185d; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">Please note that our shipping center will be closed from December 24 to December 27. Delivery requests received during this period will be processed on December 28.</p>' . "\n" .
-				'    <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="padding: 10px 24px; background: #db2777; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">I Understand</button>' . "\n" .
+				'    <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="padding: 10px 24px; background: #db2777; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">I Understand</button>' . "\n" .
 				'</div>',
 			),
 			'cookie_consent' => array(
@@ -590,8 +590,8 @@ class Elevoire_Popup_Templates {
 				'        🍪 We use cookies to enhance your browsing experience, serve personalized ads, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.' . "\n" .
 				'    </div>' . "\n" .
 				'    <div style="display: flex; gap: 8px; justify-content: flex-end;">' . "\n" .
-				'        <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="padding: 6px 14px; background: #10b981; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Accept All</button>' . "\n" .
-				'        <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="padding: 6px 14px; background: #475569; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Decline</button>' . "\n" .
+				'        <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="padding: 6px 14px; background: #10b981; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Accept All</button>' . "\n" .
+				'        <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="padding: 6px 14px; background: #475569; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Decline</button>' . "\n" .
 				'    </div>' . "\n" .
 				'</div>',
 			),
@@ -618,7 +618,7 @@ class Elevoire_Popup_Templates {
 				'    <div style="font-size: 28px; font-weight: 900; letter-spacing: 0.05em; margin-bottom: 12px; color: #ef4444;">AGE VERIFICATION</div>' . "\n" .
 				'    <div style="font-size: 15px; margin-bottom: 24px; color: #d1d5db;">You must be <strong>18 years of age or older</strong> to enter this website. Please confirm your age to continue.</div>' . "\n" .
 				'    <div style="display: flex; gap: 12px; justify-content: center; max-width: 280px; margin: 0 auto;">' . "\n" .
-				'        <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="flex: 1; padding: 12px; background: #ef4444; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">I am 18+</button>' . "\n" .
+				'        <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="flex: 1; padding: 12px; background: #ef4444; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">I am 18+</button>' . "\n" .
 				'        <button onclick="window.location.href=\'https://google.com\';" style="flex: 1; padding: 12px; background: #27272a; color: #a1a1aa; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Leave</button>' . "\n" .
 				'    </div>' . "\n" .
 				'</div>',
@@ -645,7 +645,7 @@ class Elevoire_Popup_Templates {
 				'content'       => '<div style="display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 13px; padding: 2px 0;">' . "\n" .
 				'    <span>⚖️ We have updated our Terms of Service and Privacy Policy, effective July 2026.</span>' . "\n" .
 				'    <a href="#" style="color: #93c5fd; text-decoration: underline; font-weight: 600;">Learn More</a>' . "\n" .
-				'    <button onclick="this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-size: 11px;">Dismiss</button>' . "\n" .
+				'    <button onclick="this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-size: 11px;">Dismiss</button>' . "\n" .
 				'</div>',
 			),
 			'nps_survey' => array(
@@ -671,16 +671,16 @@ class Elevoire_Popup_Templates {
 				'    <div style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">How likely are you to recommend us?</div>' . "\n" .
 				'    <p style="color: #64748b; font-size: 13px; margin-bottom: 20px;">On a scale from 1 (not likely) to 10 (extremely likely).</p>' . "\n" .
 				'    <div style="display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-bottom: 20px;">' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">1</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">2</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">3</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">4</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">5</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">6</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">7</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">8</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">9</button>' . "\n" .
-				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();" style="width: 38px; height: 32px; border: 1px solid #cbd5e1; background: #4f46e5; color: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">10</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">1</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">2</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">3</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">4</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">5</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">6</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">7</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">8</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; background: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">9</button>' . "\n" .
+				'        <button onclick="alert(\'Thank you!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();" style="width: 38px; height: 32px; border: 1px solid #cbd5e1; background: #4f46e5; color: #fff; border-radius: 4px; font-weight: 600; cursor: pointer;">10</button>' . "\n" .
 				'    </div>' . "\n" .
 				'    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; max-width: 360px; margin: 0 auto;">' . "\n" .
 				'        <span>Not Likely</span>' . "\n" .
@@ -710,7 +710,7 @@ class Elevoire_Popup_Templates {
 				'content'       => '<div>' . "\n" .
 				'    <div style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">We Value Your Feedback!</div>' . "\n" .
 				'    <p style="color: #64748b; font-size: 13px; margin-bottom: 16px;">Help us improve our tool. Tell us what you like, or what we can do better.</p>' . "\n" .
-				'    <form style="display: flex; flex-direction: column; gap: 10px;" onsubmit="event.preventDefault(); alert(\'Feedback submitted!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();">' . "\n" .
+				'    <form style="display: flex; flex-direction: column; gap: 10px;" onsubmit="event.preventDefault(); alert(\'Feedback submitted!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();">' . "\n" .
 				'        <textarea placeholder="Write your comments here..." required rows="4" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; font-family: inherit; resize: none;"></textarea>' . "\n" .
 				'        <button type="submit" style="padding: 10px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px;">Submit Feedback</button>' . "\n" .
 				'    </form>' . "\n" .
@@ -802,7 +802,7 @@ class Elevoire_Popup_Templates {
 				'    <div style="font-size: 36px; margin-bottom: 12px;">🔒</div>' . "\n" .
 				'    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-bottom: 8px;">Subscribe to Unlock Reading</div>' . "\n" .
 				'    <p style="color: #94a3b8; font-size: 14px; margin-bottom: 24px; line-height: 1.5;">This premium resource is reserved for members. Provide your email to instantly unlock and read this guide.</p>' . "\n" .
-				'    <form style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto;" onsubmit="event.preventDefault(); alert(\'Unlocked!\'); this.closest(\'.popup-craft-wrapper\').querySelector(\'.popup-craft-close\').click();">' . "\n" .
+				'    <form style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto;" onsubmit="event.preventDefault(); alert(\'Unlocked!\'); this.closest(\'.elevoire-popup-craft-wrapper\').querySelector(\'.elevoire-popup-craft-close\').click();">' . "\n" .
 				'        <input type="email" placeholder="Your best email address" required style="padding: 12px; border: 1px solid #334155; background: #1e293b; color: #fff; text-align: center; border-radius: 8px; font-size: 14px; outline: none;" />' . "\n" .
 				'        <button type="submit" style="padding: 12px; background: #3b82f6; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Unlock Content</button>' . "\n" .
 				'    </form>' . "\n" .

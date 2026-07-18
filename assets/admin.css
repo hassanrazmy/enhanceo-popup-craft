@@ -1,33 +1,33 @@
-/**
+﻿/**
  * Admin Stylesheet for Elevoire Popup Craft Template Library
  */
 
-.elevoire-templates-wrap {
+.elevoire-popup-craft-templates-wrap {
 	margin: 20px 20px 0 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-.elevoire-templates-header {
+.elevoire-popup-craft-templates-header {
 	margin-bottom: 30px;
 	border-bottom: 1px solid #e2e8f0;
 	padding-bottom: 20px;
 }
 
-.elevoire-templates-header h1 {
+.elevoire-popup-craft-templates-header h1 {
 	font-size: 28px;
 	font-weight: 800;
 	color: #0f172a;
 	margin: 0 0 8px;
 }
 
-.elevoire-templates-header p.description {
+.elevoire-popup-craft-templates-header p.description {
 	font-size: 15px;
 	color: #64748b;
 	margin: 0;
 }
 
 /* Category Filter Bar */
-.elevoire-templates-filter-bar {
+.elevoire-popup-craft-templates-filter-bar {
 	display: flex;
 	gap: 8px;
 	flex-wrap: wrap;
@@ -35,7 +35,7 @@
 	align-items: center;
 }
 
-.elevoire-filter-btn {
+.elevoire-popup-craft-filter-btn {
 	display: inline-flex !important;
 	align-items: center !important;
 	justify-content: center !important;
@@ -53,27 +53,27 @@
 	transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
 }
 
-.elevoire-filter-btn:hover {
+.elevoire-popup-craft-filter-btn:hover {
 	border-color: #94a3b8 !important;
 	color: #1e293b !important;
 	background: #f8fafc !important;
 }
 
-.elevoire-filter-btn.active {
+.elevoire-popup-craft-filter-btn.active {
 	background: #2563eb !important;
 	color: #ffffff !important;
 	border-color: #2563eb !important;
 }
 
 /* Templates Grid */
-.elevoire-templates-grid {
+.elevoire-popup-craft-templates-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 	gap: 24px;
 }
 
 /* Template Card */
-.elevoire-template-card {
+.elevoire-popup-craft-template-card {
 	background: #ffffff;
 	border: 1px solid #e2e8f0;
 	border-radius: 12px;
@@ -84,14 +84,14 @@
 	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.elevoire-template-card:hover {
+.elevoire-popup-craft-template-card:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
 	border-color: #cbd5e1;
 }
 
 /* Card Badges and Metadata */
-.elevoire-template-preview-meta {
+.elevoire-popup-craft-template-preview-meta {
 	background: #f8fafc;
 	padding: 16px 20px;
 	border-bottom: 1px solid #f1f5f9;
@@ -100,7 +100,7 @@
 	flex-wrap: wrap;
 }
 
-.elevoire-template-badge {
+.elevoire-popup-craft-template-badge {
 	display: inline-block;
 	background: #dbeafe;
 	color: #1e40af;
@@ -112,20 +112,20 @@
 	letter-spacing: 0.02em;
 }
 
-.elevoire-template-badge.type-badge {
+.elevoire-popup-craft-template-badge.type-badge {
 	background: #f1f5f9;
 	color: #475569;
 }
 
 /* Card Body */
-.elevoire-template-card-body {
+.elevoire-popup-craft-template-card-body {
 	padding: 20px;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 }
 
-.elevoire-template-title {
+.elevoire-popup-craft-template-title {
 	font-size: 16px;
 	font-weight: 700;
 	color: #0f172a;
@@ -133,7 +133,7 @@
 	line-height: 1.4;
 }
 
-.elevoire-template-desc {
+.elevoire-popup-craft-template-desc {
 	font-size: 13px;
 	color: #64748b;
 	line-height: 1.5;
@@ -141,7 +141,7 @@
 }
 
 /* Card Footer */
-.elevoire-template-card-footer {
+.elevoire-popup-craft-template-card-footer {
 	padding: 16px 20px;
 	background: #f8fafc;
 	border-top: 1px solid #f1f5f9;
@@ -149,7 +149,7 @@
 	gap: 8px;
 }
 
-.elevoire-template-card-footer .button-primary {
+.elevoire-popup-craft-template-card-footer .button-primary {
 	text-align: center !important;
 	border-radius: 6px !important;
 	padding: 6px 12px !important;
@@ -162,12 +162,12 @@
 	transition: background 0.15s ease, border-color 0.15s ease !important;
 }
 
-.elevoire-template-card-footer .button-primary:hover {
+.elevoire-popup-craft-template-card-footer .button-primary:hover {
 	background: #1d4ed8 !important;
 	border-color: #1d4ed8 !important;
 }
 
-.elevoire-template-card-footer .button-secondary {
+.elevoire-popup-craft-template-card-footer .button-secondary {
 	text-align: center !important;
 	border-radius: 6px !important;
 	padding: 6px 12px !important;
@@ -178,7 +178,7 @@
 }
 
 /* Lightbox Styles */
-.elevoire-lightbox {
+.elevoire-popup-craft-lightbox {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -189,13 +189,13 @@
 	box-sizing: border-box;
 }
 
-.elevoire-lightbox *,
-.elevoire-lightbox *::before,
-.elevoire-lightbox *::after {
+.elevoire-popup-craft-lightbox *,
+.elevoire-popup-craft-lightbox *::before,
+.elevoire-popup-craft-lightbox *::after {
 	box-sizing: border-box;
 }
 
-.elevoire-lightbox-overlay {
+.elevoire-popup-craft-lightbox-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -207,7 +207,7 @@
 	cursor: pointer;
 }
 
-.elevoire-lightbox-container {
+.elevoire-popup-craft-lightbox-container {
 	position: relative;
 	background-color: var(--preview-bg, #ffffff);
 	color: var(--preview-text, #1e293b);
@@ -220,7 +220,7 @@
 	overflow-y: auto;
 }
 
-.elevoire-lightbox-close {
+.elevoire-popup-craft-lightbox-close {
 	position: absolute;
 	top: 10px;
 	right: 15px;
@@ -235,36 +235,36 @@
 	transition: opacity 0.2s ease;
 }
 
-.elevoire-lightbox-close:hover {
+.elevoire-popup-craft-lightbox-close:hover {
 	opacity: 1;
 }
 
 /* Lightbox layout modifiers */
-.elevoire-lightbox.preview-type-center_modal {
+.elevoire-popup-craft-lightbox.preview-type-center_modal {
 	align-items: center;
 	justify-content: center;
 }
-.elevoire-lightbox.preview-type-center_modal .elevoire-lightbox-container {
+.elevoire-popup-craft-lightbox.preview-type-center_modal .elevoire-popup-craft-lightbox-container {
 	width: 600px;
 	max-height: 85vh;
 }
 
-.elevoire-lightbox.preview-type-top_banner {
+.elevoire-popup-craft-lightbox.preview-type-top_banner {
 	align-items: flex-start;
 	justify-content: center;
 }
-.elevoire-lightbox.preview-type-top_banner .elevoire-lightbox-container {
+.elevoire-popup-craft-lightbox.preview-type-top_banner .elevoire-popup-craft-lightbox-container {
 	width: 100%;
 	max-width: 100%;
 	border-radius: 0;
 	margin-top: 0;
 }
 
-.elevoire-lightbox.preview-type-bottom_banner {
+.elevoire-popup-craft-lightbox.preview-type-bottom_banner {
 	align-items: flex-end;
 	justify-content: center;
 }
-.elevoire-lightbox.preview-type-bottom_banner .elevoire-lightbox-container {
+.elevoire-popup-craft-lightbox.preview-type-bottom_banner .elevoire-popup-craft-lightbox-container {
 	width: 100%;
 	max-width: 100%;
 	border-radius: 0;

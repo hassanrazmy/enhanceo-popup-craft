@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Frontend logic for Elevoire Popup Craft.
  *
@@ -176,21 +176,21 @@ class Elevoire_Popup_Craft_Public {
 		);
 
 		$classes = array(
-			'popup-craft-wrapper',
-			'popup-craft-type-' . $type,
-			'popup-craft-anim-' . $animation,
+			'elevoire-popup-craft-wrapper',
+			'elevoire-popup-craft-type-' . $type,
+			'elevoire-popup-craft-anim-' . $animation,
 		);
 
 		if ( $backdrop_blur ) {
-			$classes[] = 'popup-craft-has-blur';
+			$classes[] = 'elevoire-popup-craft-has-blur';
 		}
 
 		if ( $close_on_overlay ) {
-			$classes[] = 'popup-craft-close-on-overlay';
+			$classes[] = 'elevoire-popup-craft-close-on-overlay';
 		}
 
 		?>
-		<div id="popup-craft-wrapper-<?php echo esc_attr( $popup_id ); ?>" 
+		<div id="elevoire-popup-craft-wrapper-<?php echo esc_attr( $popup_id ); ?>" 
 			class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" 
 			style="<?php echo esc_attr( $style ); ?>"
 			data-popup-id="<?php echo esc_attr( $popup_id ); ?>"
@@ -198,15 +198,15 @@ class Elevoire_Popup_Craft_Public {
 			role="dialog"
 			aria-modal="true">
 			
-			<div class="popup-craft-overlay" <?php echo $close_on_overlay ? 'data-popup-close' : ''; ?>></div>
+			<div class="elevoire-popup-craft-overlay" <?php echo $close_on_overlay ? 'data-popup-close' : ''; ?>></div>
 			
-			<div class="popup-craft-content-box">
-				<button type="button" class="popup-craft-close" data-popup-close aria-label="<?php esc_attr_e( 'Close popup', 'elevoire-popup-craft' ); ?>">
+			<div class="elevoire-popup-craft-content-box">
+				<button type="button" class="elevoire-popup-craft-close" data-popup-close aria-label="<?php esc_attr_e( 'Close popup', 'elevoire-popup-craft' ); ?>">
 					<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
 						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
 					</svg>
 				</button>
-				<div class="popup-craft-inner">
+				<div class="elevoire-popup-craft-inner">
 					<?php echo wp_kses_post( $content ); ?>
 				</div>
 			</div>
@@ -216,7 +216,7 @@ class Elevoire_Popup_Craft_Public {
 		// Custom CSS Output
 		if ( ! empty( $custom_css ) ) {
 			printf(
-				'<style type="text/css" id="popup-craft-custom-css-%d">%s</style>',
+				'<style type="text/css" id="elevoire-popup-craft-custom-css-%d">%s</style>',
 				absint( $popup_id ),
 				esc_html( $custom_css )
 			);
