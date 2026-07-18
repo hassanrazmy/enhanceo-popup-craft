@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// enhanceoPopupCraftData is provided via wp_localize_script
-	if (typeof enhanceoPopupCraftData === 'undefined') {
+	// ElevoirePopupCraftData is provided via wp_localize_script
+	if (typeof ElevoirePopupCraftData === 'undefined') {
 		return;
 	}
 
-	var popupId = enhanceoPopupCraftData.id;
-	var delay = parseInt(enhanceoPopupCraftData.delay, 10);
-	var cookieExpiry = parseInt(enhanceoPopupCraftData.cookie_expiry, 10);
-	var closeOnOverlay = enhanceoPopupCraftData.close_on_overlay === true || enhanceoPopupCraftData.close_on_overlay === '1';
+	var popupId = ElevoirePopupCraftData.id;
+	var delay = parseInt(ElevoirePopupCraftData.delay, 10);
+	var cookieExpiry = parseInt(ElevoirePopupCraftData.cookie_expiry, 10);
+	var closeOnOverlay = ElevoirePopupCraftData.close_on_overlay === true || ElevoirePopupCraftData.close_on_overlay === '1';
 	var storageKey = 'popup_craft_closed_' + popupId;
 
 	var wrapper = document.getElementById('popup-craft-wrapper-' + popupId);

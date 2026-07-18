@@ -1,8 +1,8 @@
 <?php
 /**
- * Frontend logic for Enhanceo Popup Craft.
+ * Frontend logic for Elevoire Popup Craft.
  *
- * @package EnhanceoPopupCraft
+ * @package ElevoirePopupCraft
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,16 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Enhanceo_Popup_Craft_Public
+ * Class Elevoire_Popup_Craft_Public
  */
-class Enhanceo_Popup_Craft_Public {
+class Elevoire_Popup_Craft_Public {
 
 	/**
 	 * The single instance of this class.
 	 *
-	 * @var Enhanceo_Popup_Craft_Public|null
+	 * @var Elevoire_Popup_Craft_Public|null
 	 */
-	private static ?Enhanceo_Popup_Craft_Public $instance = null;
+	private static ?Elevoire_Popup_Craft_Public $instance = null;
 
 	/**
 	 * The active popup post to display, if any.
@@ -38,9 +38,9 @@ class Enhanceo_Popup_Craft_Public {
 	/**
 	 * Returns the singleton instance.
 	 *
-	 * @return Enhanceo_Popup_Craft_Public
+	 * @return Elevoire_Popup_Craft_Public
 	 */
-	public static function instance(): Enhanceo_Popup_Craft_Public {
+	public static function instance(): Elevoire_Popup_Craft_Public {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -70,7 +70,7 @@ class Enhanceo_Popup_Craft_Public {
 		}
 
 		$args = array(
-			'post_type'      => ENHANCEO_POPUP_CRAFT_CPT_SLUG,
+			'post_type'      => ELEVOIRE_POPUP_CRAFT_CPT_SLUG,
 			'post_status'    => 'publish',
 			'posts_per_page' => 10,
 			'orderby'        => 'date',
@@ -80,7 +80,7 @@ class Enhanceo_Popup_Craft_Public {
 		$popups = get_posts( $args );
 
 		foreach ( $popups as $popup ) {
-			$settings = get_post_meta( $popup->ID, ENHANCEO_POPUP_CRAFT_META_KEY, true );
+			$settings = get_post_meta( $popup->ID, ELEVOIRE_POPUP_CRAFT_META_KEY, true );
 			
 			if ( ! is_array( $settings ) ) {
 				continue;
@@ -117,25 +117,25 @@ class Enhanceo_Popup_Craft_Public {
 
 		// Main CSS
 		wp_enqueue_style(
-			'enhanceo-popup-craft',
-			ENHANCEO_POPUP_CRAFT_ASSETS_URL . 'public.css',
+			'elevoire-popup-craft',
+			ELEVOIRE_POPUP_CRAFT_ASSETS_URL . 'public.css',
 			array(),
-			ENHANCEO_POPUP_CRAFT_VERSION
+			ELEVOIRE_POPUP_CRAFT_VERSION
 		);
 
 		// Vanilla JS
 		wp_enqueue_script(
-			'enhanceo-popup-craft',
-			ENHANCEO_POPUP_CRAFT_ASSETS_URL . 'public.js',
+			'elevoire-popup-craft',
+			ELEVOIRE_POPUP_CRAFT_ASSETS_URL . 'public.js',
 			array(),
-			ENHANCEO_POPUP_CRAFT_VERSION,
+			ELEVOIRE_POPUP_CRAFT_VERSION,
 			true // In footer
 		);
 
 		// Pass data to JS.
 		wp_localize_script(
-			'enhanceo-popup-craft',
-			'enhanceoPopupCraftData',
+			'elevoire-popup-craft',
+			'ElevoirePopupCraftData',
 			array(
 				'id'               => $this->active_popup->ID,
 				'delay'            => absint( $this->active_settings['delay'] ?? 0 ) * 1000,
@@ -150,7 +150,7 @@ class Enhanceo_Popup_Craft_Public {
 	 */
 	public function render_popup(): void {
 		if ( ! $this->active_popup ) {
-			echo '<!-- Enhanceo Popup Craft: No active popup found for this page. -->';
+			echo '<!-- Elevoire Popup Craft: No active popup found for this page. -->';
 			return;
 		}
 
@@ -201,7 +201,7 @@ class Enhanceo_Popup_Craft_Public {
 			<div class="popup-craft-overlay" <?php echo $close_on_overlay ? 'data-popup-close' : ''; ?>></div>
 			
 			<div class="popup-craft-content-box">
-				<button type="button" class="popup-craft-close" data-popup-close aria-label="<?php esc_attr_e( 'Close popup', 'enhanceo-popup-craft' ); ?>">
+				<button type="button" class="popup-craft-close" data-popup-close aria-label="<?php esc_attr_e( 'Close popup', 'elevoire-popup-craft' ); ?>">
 					<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
 						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
 					</svg>

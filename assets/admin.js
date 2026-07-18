@@ -4,8 +4,8 @@ jQuery(document).ready(function($){
 	}
 
 	// ── Instant client-side category filter ──────────────────────────────────
-	var $filterBtns = $('.enhanceo-filter-btn');
-	var $cards      = $('.enhanceo-template-card');
+	var $filterBtns = $('.elevoire-filter-btn');
+	var $cards      = $('.elevoire-template-card');
 
 	if ( $filterBtns.length ) {
 		$filterBtns.on('click', function() {
@@ -27,16 +27,16 @@ jQuery(document).ready(function($){
 	}
 
 	// Live Preview Lightbox setup
-	var $lightbox = $('#enhanceo-preview-lightbox');
-	var $lightboxBox = $('#enhanceo-lightbox-container-box');
-	var $lightboxContent = $('#enhanceo-lightbox-inner-content');
+	var $lightbox = $('#elevoire-preview-lightbox');
+	var $lightboxBox = $('#elevoire-lightbox-container-box');
+	var $lightboxContent = $('#elevoire-lightbox-inner-content');
 
-	if ( $lightbox.length && typeof enhanceoTemplatesData !== 'undefined' ) {
+	if ( $lightbox.length && typeof elevoireTemplatesData !== 'undefined' ) {
 		
-		$('.enhanceo-preview-btn').on('click', function(e) {
+		$('.elevoire-preview-btn').on('click', function(e) {
 			e.preventDefault();
 			var templateId = $(this).data('template-id');
-			var template = enhanceoTemplatesData[templateId];
+			var template = elevoireTemplatesData[templateId];
 
 			if (!template) {
 				return;
@@ -68,7 +68,7 @@ jQuery(document).ready(function($){
 		});
 
 		// Close events
-		$('#enhanceo-lightbox-close-btn, #enhanceo-lightbox-close-overlay').on('click', function(e) {
+		$('#elevoire-lightbox-close-btn, #elevoire-lightbox-close-overlay').on('click', function(e) {
 			e.preventDefault();
 			$lightbox.hide();
 			$lightboxContent.empty();

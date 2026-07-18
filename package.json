@@ -1,0 +1,15 @@
+{
+  "name": "elevoire-popup-craft",
+  "version": "1.0.0",
+  "description": "A lightweight, performant, and secure popup builder for WordPress.",
+  "scripts": {
+    "build": "gulp zip",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-zip": "^6.0.1"
+  },
+  "author": "Elevoire",
+  "license": "GPL-2.0-or-later"
+}

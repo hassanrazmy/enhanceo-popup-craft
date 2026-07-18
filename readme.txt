@@ -1,5 +1,5 @@
-=== Enhanceo Popup Craft ===
-Contributors: enhanceo
+=== Elevoire Popup Craft ===
+Contributors: elevoire
 Tags: popup, modal, lead generation, exit intent, popup builder
 Requires at least: 6.0
 Tested up to: 6.8
@@ -12,7 +12,7 @@ A lightweight, performant, and secure popup builder. Build beautiful, accessible
 
 == Description ==
 
-Enhanceo Popup Craft lets you build and manage on-site popups without relying on jQuery or bloated page-builder dependencies. Popups are created as a dedicated custom post type, so you can create, edit, and organize as many as you need from a familiar WordPress screen.
+Elevoire Popup Craft lets you build and manage on-site popups without relying on jQuery or bloated page-builder dependencies. Popups are created as a dedicated custom post type, so you can create, edit, and organize as many as you need from a familiar WordPress screen.
 
 **Key Features**
 
@@ -35,7 +35,7 @@ Enhanceo Popup Craft lets you build and manage on-site popups without relying on
 
 == Installation ==
 
-1. Upload the `enhanceo-popup-craft` folder to the `/wp-content/plugins/` directory, or install directly through the **Plugins > Add New** screen in WordPress.
+1. Upload the `elevoire-popup-craft` folder to the `/wp-content/plugins/` directory, or install directly through the **Plugins > Add New** screen in WordPress.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Go to **Popup Craft** in the admin menu to create your first popup.
 
