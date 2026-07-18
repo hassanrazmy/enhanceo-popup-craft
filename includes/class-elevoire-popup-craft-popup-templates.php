@@ -83,7 +83,7 @@ class Elevoire_Popup_Templates {
 	 * Listen and process template import action.
 	 */
 	public function handle_import_action(): void {
-		if ( ! isset( $_GET['action'] ) || 'elevoire_popup_craft_import_template' !== $_GET['action'] ) {
+		if ( ! isset( $_GET['action'] ) || 'elevoire_popup_craft_import_template' !== sanitize_key( wp_unslash( $_GET['action'] ) ) ) {
 			return;
 		}
 

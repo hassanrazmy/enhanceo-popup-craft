@@ -31,7 +31,7 @@ define( 'ELEVOIRE_POPUP_CRAFT_URL',         plugin_dir_url( __FILE__ ) );
 define( 'ELEVOIRE_POPUP_CRAFT_ASSETS_URL',  ELEVOIRE_POPUP_CRAFT_URL  . 'assets/' );
 define( 'ELEVOIRE_POPUP_CRAFT_ASSETS_PATH', ELEVOIRE_POPUP_CRAFT_PATH . 'assets/' );
 define( 'ELEVOIRE_POPUP_CRAFT_CPT_SLUG',    'elevoire_popup_craft' );
-define( 'ELEVOIRE_POPUP_CRAFT_META_KEY',    '_elevoire_elevoire_popup_craft_settings' );
+define( 'ELEVOIRE_POPUP_CRAFT_META_KEY',    '_elevoire_popup_craft_settings' );
 
 /**
  * Class Elevoire_Popup_Craft

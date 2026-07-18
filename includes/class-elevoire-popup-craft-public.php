@@ -198,7 +198,7 @@ class Elevoire_Popup_Craft_Public {
 			role="dialog"
 			aria-modal="true">
 			
-			<div class="elevoire-popup-craft-overlay" <?php echo $close_on_overlay ? 'data-popup-close' : ''; ?>></div>
+			<div class="elevoire-popup-craft-overlay" <?php echo esc_attr( $close_on_overlay ? 'data-popup-close' : '' ); ?>></div>
 			
 			<div class="elevoire-popup-craft-content-box">
 				<button type="button" class="elevoire-popup-craft-close" data-popup-close aria-label="<?php esc_attr_e( 'Close popup', 'elevoire-popup-craft' ); ?>">
@@ -218,7 +218,7 @@ class Elevoire_Popup_Craft_Public {
 			printf(
 				'<style type="text/css" id="elevoire-popup-craft-custom-css-%d">%s</style>',
 				absint( $popup_id ),
-				esc_html( $custom_css )
+				wp_strip_all_tags( $custom_css )
 			);
 		}
 	}
