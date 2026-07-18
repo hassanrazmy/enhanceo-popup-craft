@@ -62,6 +62,11 @@ class Elevoire_Popup_Templates {
 				ELEVOIRE_POPUP_CRAFT_VERSION,
 				true
 			);
+			wp_localize_script(
+				'elevoire-popup-craft-admin',
+				'elevoirePopupCraftTemplatesData',
+				self::get_templates()
+			);
 		}
 	}
 
@@ -195,11 +200,6 @@ class Elevoire_Popup_Templates {
 					<div class="elevoire-popup-craft-lightbox-content" id="elevoire-popup-craft-lightbox-inner-content"></div>
 				</div>
 			</div>
-
-			<!-- Localize templates configurations -->
-			<script type="text/javascript">
-				var elevoirePopupCraftTemplatesData = <?php echo wp_json_encode( $templates ); ?>;
-			</script>
 		</div>
 		<?php
 	}
@@ -228,7 +228,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #1e293b;">Join Our Newsletter</div>' . "\n" .
@@ -256,7 +256,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">' . "\n" .
 				'    <div style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 48px 24px; border-radius: 12px; text-align: center; color: #fff; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);">' . "\n" .
@@ -291,7 +291,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center; border: 1px solid #d4af37; padding: 16px; border-radius: 12px;">' . "\n" .
 				'    <div style="font-family: Georgia, serif; font-size: 28px; font-weight: 300; letter-spacing: 0.05em; color: #d4af37; margin-bottom: 12px;">The VIP Lounge</div>' . "\n" .
@@ -320,7 +320,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 32px; font-weight: 800; color: #e11d48; margin-bottom: 8px;">Wait, Don\'t Go!</div>' . "\n" .
@@ -351,7 +351,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 15px; font-weight: 600; padding: 4px 0;">' . "\n" .
 				'    <span style="background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">URGENT</span>' . "\n" .
@@ -376,7 +376,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 40px; margin-bottom: 8px;">🎉</div>' . "\n" .
@@ -405,7 +405,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 14px; padding: 4px 0;">' . "\n" .
 				'    <span>🚚 You are only <strong>$20 away</strong> from <strong>FREE SHIPPING</strong>! Add items to your cart.</span>' . "\n" .
@@ -429,7 +429,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 36px; margin-bottom: 8px;">🛒</div>' . "\n" .
@@ -458,7 +458,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center; padding: 8px;">' . "\n" .
 				'    <div style="font-size: 40px; margin-bottom: 12px; color: #f59e0b;">⚠️</div>' . "\n" .
@@ -484,7 +484,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div>' . "\n" .
 				'    <span style="display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; margin-bottom: 12px;">NEW RELEASE</span>' . "\n" .
@@ -518,7 +518,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; gap: 20px; flex-wrap: wrap;">' . "\n" .
 				'    <div style="flex: 1; min-width: 220px;">' . "\n" .
@@ -557,7 +557,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 32px; margin-bottom: 8px;">🎄</div>' . "\n" .
@@ -583,7 +583,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; max-width: 1200px; margin: 0 auto; padding: 4px 0;">' . "\n" .
 				'    <div style="flex: 1; min-width: 250px; text-align: left; line-height: 1.5;">' . "\n" .
@@ -612,7 +612,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center; padding: 12px;">' . "\n" .
 				'    <div style="font-size: 28px; font-weight: 900; letter-spacing: 0.05em; margin-bottom: 12px; color: #ef4444;">AGE VERIFICATION</div>' . "\n" .
@@ -640,7 +640,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 13px; padding: 2px 0;">' . "\n" .
 				'    <span>⚖️ We have updated our Terms of Service and Privacy Policy, effective July 2026.</span>' . "\n" .
@@ -665,7 +665,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">How likely are you to recommend us?</div>' . "\n" .
@@ -705,7 +705,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div>' . "\n" .
 				'    <div style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">We Value Your Feedback!</div>' . "\n" .
@@ -733,7 +733,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Get Our Mobile App</div>' . "\n" .
@@ -767,7 +767,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Let\'s Connect!</div>' . "\n" .
@@ -796,7 +796,7 @@ class Elevoire_Popup_Templates {
 					'targeting'        => 'all',
 					'specific_ids'     => '',
 					'cookie_expiry'    => 30,
-					'custom_css'       => '',
+	
 				),
 				'content'       => '<div style="text-align: center;">' . "\n" .
 				'    <div style="font-size: 36px; margin-bottom: 12px;">🔒</div>' . "\n" .
