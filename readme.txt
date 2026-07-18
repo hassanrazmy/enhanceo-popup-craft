@@ -1,5 +1,5 @@
 === Elevoire Popup Craft ===
-Contributors: elevoire
+Contributors: hassanraza
 Tags: popup, modal, lead generation, exit intent, popup builder
 Requires at least: 6.0
 Tested up to: 7.0
