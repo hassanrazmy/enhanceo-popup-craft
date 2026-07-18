@@ -2,7 +2,7 @@
 Contributors: elevoire
 Tags: popup, modal, lead generation, exit intent, popup builder
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
