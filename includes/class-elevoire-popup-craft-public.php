@@ -218,7 +218,7 @@ class Elevoire_Popup_Craft_Public {
 			printf(
 				'<style type="text/css" id="elevoire-popup-craft-custom-css-%d">%s</style>',
 				absint( $popup_id ),
-				wp_strip_all_tags( $custom_css )
+				esc_html( $custom_css )
 			);
 		}
 	}
