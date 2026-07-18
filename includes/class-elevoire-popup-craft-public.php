@@ -161,7 +161,6 @@ class Elevoire_Popup_Craft_Public {
 		$backdrop_blur    = (bool) ( $this->active_settings['backdrop_blur'] ?? '1' );
 		$close_on_overlay = (bool) ( $this->active_settings['close_on_overlay'] ?? '1' );
 		$animation        = esc_attr( $this->active_settings['animation'] ?? 'zoom' );
-		$custom_css       = $this->active_settings['custom_css'] ?? '';
 
 		$content    = do_blocks( $this->active_popup->post_content );
 		$content    = do_shortcode( $content );
@@ -213,13 +212,5 @@ class Elevoire_Popup_Craft_Public {
 
 		</div>
 		<?php
-		// Custom CSS Output
-		if ( ! empty( $custom_css ) ) {
-			printf(
-				'<style type="text/css" id="elevoire-popup-craft-custom-css-%d">%s</style>',
-				absint( $popup_id ),
-				esc_html( $custom_css )
-			);
-		}
 	}
 }

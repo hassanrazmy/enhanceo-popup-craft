@@ -102,7 +102,6 @@ class Elevoire_Popup_Craft_Meta_Box {
 			'border_radius'    => 12,
 			'close_on_overlay' => '1',
 			'animation'        => 'zoom',
-			'custom_css'       => '',
 		);
 
 		$settings = wp_parse_args( $settings, $defaults );
@@ -226,14 +225,6 @@ class Elevoire_Popup_Craft_Meta_Box {
 			esc_attr( $settings['text_color'] )
 		);
 		echo '</p>';
-
-		// Custom CSS
-		echo '<p><strong>' . esc_html__( 'Custom CSS', 'elevoire-popup-craft' ) . '</strong><br>';
-		printf(
-			'<textarea name="elevoire_popup_craft_settings[custom_css]" rows="5" style="width: 100%%; font-family: monospace; font-size: 12px;">%s</textarea>',
-			esc_textarea( $settings['custom_css'] )
-		);
-		echo '</p>';
 	}
 
 	/**
@@ -270,7 +261,6 @@ class Elevoire_Popup_Craft_Meta_Box {
 				'border_radius'    => isset( $raw_data['border_radius'] ) ? absint( $raw_data['border_radius'] ) : 12,
 				'close_on_overlay' => isset( $raw_data['close_on_overlay'] ) ? '1' : '0',
 				'animation'        => isset( $raw_data['animation'] ) ? sanitize_key( $raw_data['animation'] ) : 'zoom',
-				'custom_css'       => isset( $raw_data['custom_css'] ) ? wp_strip_all_tags( $raw_data['custom_css'] ) : '',
 			);
 
 			update_post_meta( $post_id, ELEVOIRE_POPUP_CRAFT_META_KEY, $sanitized_data );
